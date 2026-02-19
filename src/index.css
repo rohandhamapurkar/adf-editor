@@ -3,6 +3,7 @@ html, body, #root {
   padding: 0;
   height: 100%;
   overflow: hidden;
+  font-family: 'Atlassian Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
 }
 
 html[data-color-mode="light"] {
@@ -17,7 +18,7 @@ html[data-color-mode="light"] {
 html[data-color-mode="dark"] {
   --bg-primary: #1d2125;
   --bg-secondary: #22272b;
-  --text-primary: #b6c2cf;
+  --text-primary: #ffffff;
   --border-color: #3d4449;
   --splitter-color: #3d4449;
   --splitter-hover: #5a6068;
@@ -39,4 +40,47 @@ html {
 [data-ds--text-area--container] textarea {
   flex: 1 !important;
   resize: none;
+}
+
+/* Force Atlassian Sans on editor content and toolbar */
+.ProseMirror,
+.ProseMirror p,
+.ProseMirror span,
+[data-testid="ak-editor-main-toolbar"],
+.akEditor,
+[role="textbox"] {
+  font-family: 'Atlassian Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif !important;
+}
+
+/* Dark mode: ensure editor text is white */
+html[data-color-mode="dark"] .ProseMirror,
+html[data-color-mode="dark"] .ProseMirror p,
+html[data-color-mode="dark"] .ProseMirror span,
+html[data-color-mode="dark"] [role="textbox"] {
+  color: #ffffff !important;
+}
+
+/* Dark mode: title input */
+html[data-color-mode="dark"] [data-testid="ak-editor-title-content-area"] input,
+html[data-color-mode="dark"] [data-testid="ak-editor-title-content-area"] textarea {
+  color: #ffffff !important;
+}
+
+/* Dark mode: ADF textarea text color */
+html[data-color-mode="dark"] [data-ds--text-area--container] textarea {
+  color: #ffffff !important;
+}
+
+/* Keep Atlaskit assistive/screen-reader elements hidden */
+.assistive,
+[role="status"].assistive {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
 }
