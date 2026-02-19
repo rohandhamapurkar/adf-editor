@@ -72,7 +72,7 @@ const ResizableSplit: React.FC<ResizableSplitProps> = ({
           overflow: 'auto',
           height: '100vh',
           minWidth: MIN_PANEL_WIDTH,
-          backgroundColor: 'var(--bg-primary, #ffffff)',
+          backgroundColor: '#ffffff',
         }}
         data-testid="left-panel"
       >
@@ -86,18 +86,16 @@ const ResizableSplit: React.FC<ResizableSplitProps> = ({
         style={{
           width: SPLITTER_WIDTH,
           cursor: 'col-resize',
-          backgroundColor: 'var(--splitter-color, #c1c7d0)',
+          backgroundColor: '#c1c7d0',
           flexShrink: 0,
           transition: 'background-color 0.15s',
         }}
         onMouseEnter={(e) => {
-          (e.currentTarget as HTMLDivElement).style.backgroundColor =
-            'var(--splitter-hover, #a5adba)';
+          (e.currentTarget as HTMLDivElement).style.backgroundColor = '#a5adba';
         }}
         onMouseLeave={(e) => {
           if (!isDragging) {
-            (e.currentTarget as HTMLDivElement).style.backgroundColor =
-              'var(--splitter-color, #c1c7d0)';
+            (e.currentTarget as HTMLDivElement).style.backgroundColor = '#c1c7d0';
           }
         }}
       />
@@ -109,7 +107,7 @@ const ResizableSplit: React.FC<ResizableSplitProps> = ({
           overflow: 'auto',
           height: '100vh',
           minWidth: MIN_PANEL_WIDTH,
-          backgroundColor: 'var(--bg-secondary, #f4f5f7)',
+          backgroundColor: '#f4f5f7',
         }}
         data-testid="right-panel"
       >
