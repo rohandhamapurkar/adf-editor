@@ -28,3 +28,15 @@ html {
   color: var(--text-primary);
   transition: background-color 0.2s, color 0.2s;
 }
+
+/* Make Atlaskit TextArea fill its flex container */
+[data-ds--text-area--container] {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+[data-ds--text-area--container] textarea {
+  flex: 1 !important;
+  resize: none;
+}
