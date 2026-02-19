@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback, useEffect, useMemo } from 'react';
+import React, { useState, useRef, useCallback, useEffect } from 'react';
 import { IntlProvider } from 'react-intl-next';
 import TextArea from '@atlaskit/textarea';
 import { ComposableEditor } from '@atlaskit/editor-core/composable-editor';
