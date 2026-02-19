@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback, useEffect } from 'react';
+import React, { useState, useRef, useCallback, useEffect, useMemo } from 'react';
 import { IntlProvider } from 'react-intl-next';
 import TextArea from '@atlaskit/textarea';
 import { ComposableEditor } from '@atlaskit/editor-core/composable-editor';
@@ -62,13 +62,31 @@ const AdfViewer: React.FC = () => {
     editorApiRef.current = api;
   }, []);
 
-  const handleEditorChange = useCallback(() => {
+  // Debounced editor→textarea sync to avoid race conditions on rapid typing
+  const debounceTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const updateTextArea = useCallback(() => {
     if (!editorActionsRef.current) return;
     editorActionsRef.current.getValue().then((value) => {
       if (adfTextAreaRef.current) {
         adfTextAreaRef.current.value = JSON.stringify(value, null, 2);
       }
     });
+  }, []);
+
+  const handleEditorChange = useCallback(() => {
+    if (debounceTimerRef.current) {
+      clearTimeout(debounceTimerRef.current);
+    }
+    debounceTimerRef.current = setTimeout(updateTextArea, 100);
+  }, [updateTextArea]);
+
+  // Clean up debounce timer on unmount
+  useEffect(() => {
+    return () => {
+      if (debounceTimerRef.current) {
+        clearTimeout(debounceTimerRef.current);
+      }
+    };
   }, []);
 
   const handleAdfChange = useCallback(

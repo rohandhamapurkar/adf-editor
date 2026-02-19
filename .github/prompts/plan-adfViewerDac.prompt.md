@@ -26,7 +26,7 @@ Exact functional replica of the Atlassian ADF Viewer DAC example (`31-adf-viewer
 
 ---
 
-## Milestone 1 — Project Scaffold & Build Config
+## Milestone 1 — Project Scaffold & Build Config ✅
 
 **Goal:** CRA project boots with CRACO and all Atlaskit packages installed without build errors.
 
@@ -92,7 +92,7 @@ npm start
 
 ---
 
-## Milestone 2 — Resizable Split Panel Layout
+## Milestone 2 — Resizable Split Panel Layout ✅
 
 **Goal:** A working horizontal split layout with a draggable splitter bar, before wiring up any Atlaskit editor.
 
@@ -129,7 +129,7 @@ npm start
 
 ---
 
-## Milestone 3 — Theme System (Light/Dark)
+## Milestone 3 — Theme System (Light/Dark) ✅
 
 **Goal:** OS-aware dark/light theme with a toggle button, applied globally.
 
@@ -201,7 +201,7 @@ npm start
 
 ---
 
-## Milestone 4 — Atlaskit Editor Integration
+## Milestone 4 — Atlaskit Editor Integration ✅
 
 **Goal:** Full-page Atlaskit editor renders in the left panel with all toolbar features.
 
@@ -286,7 +286,7 @@ npm start
 
 ---
 
-## Milestone 5 — ADF JSON Textarea Panel
+## Milestone 5 — ADF JSON Textarea Panel ✅
 
 **Goal:** Right panel shows ADF JSON textarea with proper styling.
 
@@ -320,7 +320,7 @@ npm start
 
 ---
 
-## Milestone 6 — Bidirectional Sync
+## Milestone 6 — Bidirectional Sync ✅
 
 **Goal:** Typing in the editor updates the JSON textarea; pasting valid ADF JSON into the textarea updates the editor.
 
@@ -371,7 +371,7 @@ npm start
 
 ---
 
-## Milestone 7 — Polish & Final Verification
+## Milestone 7 — Polish & Final Verification ✅
 
 **Goal:** Final styling, edge cases, dark mode integration verification, and cleanup.
 
