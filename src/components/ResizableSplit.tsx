@@ -72,6 +72,7 @@ const ResizableSplit: React.FC<ResizableSplitProps> = ({
           overflow: 'auto',
           height: '100vh',
           minWidth: MIN_PANEL_WIDTH,
+          backgroundColor: 'var(--bg-primary, #ffffff)',
         }}
         data-testid="left-panel"
       >
@@ -108,6 +109,7 @@ const ResizableSplit: React.FC<ResizableSplitProps> = ({
           overflow: 'auto',
           height: '100vh',
           minWidth: MIN_PANEL_WIDTH,
+          backgroundColor: 'var(--bg-secondary, #f4f5f7)',
         }}
         data-testid="right-panel"
       >
