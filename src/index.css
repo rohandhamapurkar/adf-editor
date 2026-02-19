@@ -18,7 +18,7 @@ html[data-color-mode="light"] {
 html[data-color-mode="dark"] {
   --bg-primary: #1d2125;
   --bg-secondary: #22272b;
-  --text-primary: #ffffff;
+  --text-primary: #dee4ea;
   --border-color: #3d4449;
   --splitter-color: #3d4449;
   --splitter-hover: #5a6068;
@@ -52,23 +52,86 @@ html {
   font-family: 'Atlassian Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif !important;
 }
 
-/* Dark mode: ensure editor text is white */
+/* Dark mode: ensure editor text is readable */
 html[data-color-mode="dark"] .ProseMirror,
 html[data-color-mode="dark"] .ProseMirror p,
 html[data-color-mode="dark"] .ProseMirror span,
 html[data-color-mode="dark"] [role="textbox"] {
-  color: #ffffff !important;
+  color: #dee4ea !important;
+}
+
+/* Dark mode: inline code — Atlassian dark tokens */
+html[data-color-mode="dark"] .ProseMirror code,
+html[data-color-mode="dark"] .ProseMirror span[class*="code"] {
+  color: #ff7452 !important;
+  background-color: #2c333a !important;
+  border-color: #3d4449 !important;
+}
+
+/* Dark mode: code blocks */
+html[data-color-mode="dark"] .ProseMirror pre,
+html[data-color-mode="dark"] .ProseMirror .code-block {
+  background-color: #2c333a !important;
+  color: #dee4ea !important;
+}
+
+/* Dark mode: blockquote */
+html[data-color-mode="dark"] .ProseMirror blockquote {
+  border-left-color: #3d4449 !important;
+  color: #9fadbc !important;
+}
+
+/* Dark mode: panels */
+html[data-color-mode="dark"] .ProseMirror [data-panel-type] {
+  background-color: #2c333a !important;
+  color: #dee4ea !important;
+}
+
+/* Dark mode: tables */
+html[data-color-mode="dark"] .ProseMirror th {
+  background-color: #2c333a !important;
+  color: #dee4ea !important;
+}
+html[data-color-mode="dark"] .ProseMirror td {
+  border-color: #3d4449 !important;
+}
+
+/* Dark mode: horizontal rule */
+html[data-color-mode="dark"] .ProseMirror hr {
+  border-color: #3d4449 !important;
+}
+
+/* Dark mode: links */
+html[data-color-mode="dark"] .ProseMirror a {
+  color: #579dff !important;
+}
+
+/* Dark mode: placeholder text */
+html[data-color-mode="dark"] .ProseMirror .placeholder-decoration {
+  color: #738496 !important;
 }
 
 /* Dark mode: title input */
 html[data-color-mode="dark"] [data-testid="ak-editor-title-content-area"] input,
 html[data-color-mode="dark"] [data-testid="ak-editor-title-content-area"] textarea {
-  color: #ffffff !important;
+  color: #dee4ea !important;
 }
 
 /* Dark mode: ADF textarea text color */
 html[data-color-mode="dark"] [data-ds--text-area--container] textarea {
-  color: #ffffff !important;
+  color: #dee4ea !important;
+}
+
+/* Dark mode: editor toolbar */
+html[data-color-mode="dark"] [data-testid="ak-editor-main-toolbar"] {
+  background-color: #1d2125 !important;
+  border-bottom-color: #3d4449 !important;
+}
+
+/* Dark mode: editor content area background */
+html[data-color-mode="dark"] .akEditor [class*="ContentArea"],
+html[data-color-mode="dark"] .akEditor [class*="contentArea"] {
+  background-color: #1d2125 !important;
 }
 
 /* Keep Atlaskit assistive/screen-reader elements hidden */
