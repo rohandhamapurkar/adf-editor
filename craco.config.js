@@ -66,34 +66,36 @@ module.exports = {
       if (webpackConfig.mode === 'production') {
         webpackConfig.optimization = {
           ...webpackConfig.optimization,
+          runtimeChunk: 'single',
           splitChunks: {
             ...webpackConfig.optimization?.splitChunks,
-            chunks: "all",
-            maxInitialRequests: Infinity,
-            minSize: 0,
+            chunks: 'all',
+            // Keep chunks reasonably sized and limit the total number to avoid thousands of tiny files
+            minSize: 50 * 1024,
+            maxInitialRequests: 30,
+            maxAsyncRequests: 30,
             cacheGroups: {
               ...webpackConfig.optimization?.splitChunks?.cacheGroups,
               atlaskitVendor: {
                 test: /[\\/]node_modules[\\/](@atlaskit|@atlassian)[\\/]/,
-                name(module) {
-                  const match = module.context.match(
-                    /[\\/]node_modules[\\/](@atlaskit|@atlassian)[\\/](.*?)([\\/]|$)/
-                  );
-                  if (match) {
-                    const org = match[1].replace("@", "");
-                    const pkg = match[2];
-                    return `vendor-${org}-${pkg}`;
-                  }
-                  return "atlaskit-vendor";
-                },
+                name: 'vendor-atlaskit',
                 priority: 20,
-                chunks: "all",
+                chunks: 'all',
+                enforce: true,
               },
               reactVendor: {
                 test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
-                name: "react-vendor",
+                name: 'react-vendor',
                 priority: 15,
-                chunks: "all",
+                chunks: 'all',
+                enforce: true,
+              },
+              vendors: {
+                test: /[\\/]node_modules[\\/]/,
+                name: 'vendors',
+                priority: 5,
+                chunks: 'all',
+                enforce: true,
               },
             },
           },
