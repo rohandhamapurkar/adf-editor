@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkadf_editor=self.webpackChunkadf_editor||[]).push([[2578],{22578(e,t,r){r.d(t,{A:()=>s});var u=r(16260),a=r(43666);function s(e){(0,a.A)(1,arguments);var t=(0,u.A)(e),r=t.getMonth();return t.setFullYear(t.getFullYear(),r+1,0),t.setHours(0,0,0,0),t}}}]);

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkadf_editor=self.webpackChunkadf_editor||[]).push([[9242],{60226(r,e,n){n.d(e,{o:()=>t});var a=n(51499),t=function(){return{name:"border",marks:function(){return[{name:"border",mark:a.P}]}}}}}]);
