@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkadf_editor=self.webpackChunkadf_editor||[]).push([[8101],{95221(a,e,n){n.d(e,{K:()=>t});var r=n(51838),t=function(){return{name:"dataConsumer",marks:function(){return[{name:"dataConsumer",mark:r.n}]}}}}}]);
