@@ -8,8 +8,9 @@ import { EditorContext, WithEditorActions, ToolbarHelp } from '@atlaskit/editor-
 import type { EditorActions, EditorProps } from '@atlaskit/editor-core';
 import type { ExtractInjectionAPI } from '@atlaskit/editor-common/types';
 import type { HelpDialogPlugin } from '@atlaskit/editor-plugins/help-dialog';
-import { mentionResourceProvider } from '@atlaskit/util-data-test/mention-story-data';
+import { mentionResourceProvider } from '../utils/SimpleMentionResource';
 import ResizableSplit from './ResizableSplit';
+
 
 const providers = {
   mentionProvider: Promise.resolve(mentionResourceProvider),

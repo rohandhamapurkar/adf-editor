@@ -1,9 +1,17 @@
 const webpack = require("webpack");
 const path = require("path");
+// const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
+
+// process.env.GENERATE_SOURCEMAP = "false";
 
 module.exports = {
   webpack: {
     configure: (webpackConfig) => {
+      // Disable source maps in production to reduce bundle size
+      if (webpackConfig.mode === "production") {
+        webpackConfig.devtool = false;
+      }
+
       // Fix broken @atlaskit/icon-file-type glyph imports that reference ../../src/internal/icon.tsx
       // Redirect to the actual dist/cjs/internal/icon.js
       webpackConfig.resolve.alias = {
@@ -44,7 +52,7 @@ module.exports = {
 
       // Suppress source-map-loader warnings for Atlaskit packages
       webpackConfig.ignoreWarnings = [
-        function ignoreSourcemapsloaderWarnings(warning) {
+        (warning) => {
           return (
             warning.module &&
             warning.module.resource &&
@@ -53,6 +61,53 @@ module.exports = {
           );
         },
       ];
+
+      // Configure splitChunks - ONLY in production to avoid dev server hangs
+      if (webpackConfig.mode === 'production') {
+        webpackConfig.optimization = {
+          ...webpackConfig.optimization,
+          splitChunks: {
+            ...webpackConfig.optimization?.splitChunks,
+            chunks: "all",
+            maxInitialRequests: Infinity,
+            minSize: 0,
+            cacheGroups: {
+              ...webpackConfig.optimization?.splitChunks?.cacheGroups,
+              atlaskitVendor: {
+                test: /[\\/]node_modules[\\/](@atlaskit|@atlassian)[\\/]/,
+                name(module) {
+                  const match = module.context.match(
+                    /[\\/]node_modules[\\/](@atlaskit|@atlassian)[\\/](.*?)([\\/]|$)/
+                  );
+                  if (match) {
+                    const org = match[1].replace("@", "");
+                    const pkg = match[2];
+                    return `vendor-${org}-${pkg}`;
+                  }
+                  return "atlaskit-vendor";
+                },
+                priority: 20,
+                chunks: "all",
+              },
+              reactVendor: {
+                test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
+                name: "react-vendor",
+                priority: 15,
+                chunks: "all",
+              },
+            },
+          },
+        };
+      }
+
+      // Add BundleAnalyzerPlugin
+      // webpackConfig.plugins.push(
+      //   new BundleAnalyzerPlugin({
+      //     analyzerMode: "static",
+      //     reportFilename: "bundle-report.html",
+      //     openAnalyzer: false,
+      //   })
+      // );
 
       return webpackConfig;
     },
