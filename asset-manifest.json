@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "./static/css/main.2fbaf8fa.css",
-    "main.js": "./static/js/main.47eb0009.js",
+    "main.js": "./static/js/main.2c7722c3.js",
     "runtime.js": "./static/js/runtime.b121f918.js",
     "@atlaskit-internal_linkdatasource-jiraissuesmodal.js": "./static/js/@atlaskit-internal_linkdatasource-jiraissuesmodal.5c34fd3e.chunk.js",
     "@atlaskit-internal_linkdatasource-assetsmodal.js": "./static/js/@atlaskit-internal_linkdatasource-assetsmodal.5c34fd3e.chunk.js",
@@ -26,6 +26,6 @@
     "static/js/react-vendor.eb702ffa.js",
     "static/js/vendors.07698bab.js",
     "static/css/main.2fbaf8fa.css",
-    "static/js/main.47eb0009.js"
+    "static/js/main.2c7722c3.js"
   ]
 }
